@@ -4,18 +4,18 @@
   "description": "A confirm dialog for React. One line. Beautiful.",
   "license": "MIT",
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
-      },
-      "require": {
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
       }
     },
     "./styles.css": "./dist/styles.css"
@@ -49,7 +49,7 @@
   },
   "size-limit": [
     {
-      "path": "dist/index.mjs",
+      "path": "dist/index.js",
       "limit": "3 kB"
     }
   ]
