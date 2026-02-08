@@ -1,3 +1,5 @@
+'use client';
+
 import { useSyncExternalStore, useState, useRef, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { subscribe, getSnapshot, respond } from './state';
