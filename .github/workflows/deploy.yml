@@ -34,6 +34,12 @@ jobs:
       - name: Build library
         run: npm run build
 
+      - name: Type check
+        run: npm run type-check
+
+      - name: Run tests
+        run: npm run test
+
       - name: Install demo dependencies
         working-directory: demo
         run: npm ci
