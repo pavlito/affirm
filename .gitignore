@@ -1,3 +1,14 @@
 node_modules
 dist
 .DS_Store
+*.tgz
+
+# Demo site build output
+demo/out
+demo/.next
+
+# Internal dev docs and plans
+docs/
+
+# Claude Code workspace
+.claude/
