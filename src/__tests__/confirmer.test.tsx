@@ -1,5 +1,6 @@
-import { describe, it, expect, afterEach, beforeAll, beforeEach } from 'vitest';
+import { describe, it, expect, afterEach, beforeAll, beforeEach, vi } from 'vitest';
 import { render, screen, waitFor, cleanup } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Confirmer } from '../confirmer';
 import { ConfirmState } from '../state';
 
@@ -97,5 +98,77 @@ describe('Confirmer', () => {
     await openDialog({ title: 'Danger!', variant: 'danger' });
     const dialog = screen.getByRole('alertdialog');
     expect(dialog).toHaveAttribute('data-variant', 'danger');
+  });
+
+  it('resolves with true when Confirm button is clicked', async () => {
+    render(<Confirmer />);
+    const promise = ConfirmState.confirm('Delete?');
+    await waitFor(() => {
+      expect(screen.getByRole('alertdialog')).toBeInTheDocument();
+    });
+
+    const confirmBtn = screen.getByText('Confirm');
+    await userEvent.click(confirmBtn);
+
+    const result = await waitFor(() => promise, { timeout: 500 });
+    expect(result).toBe(true);
+  });
+
+  it('resolves with false when Cancel button is clicked', async () => {
+    render(<Confirmer />);
+    const promise = ConfirmState.confirm('Delete?');
+    await waitFor(() => {
+      expect(screen.getByRole('alertdialog')).toBeInTheDocument();
+    });
+
+    const cancelBtn = screen.getByText('Cancel');
+    await userEvent.click(cancelBtn);
+
+    const result = await waitFor(() => promise, { timeout: 500 });
+    expect(result).toBe(false);
+  });
+
+  it('resolves with false when Escape key is pressed', async () => {
+    render(<Confirmer />);
+    const promise = ConfirmState.confirm('Delete?');
+    await waitFor(() => {
+      expect(screen.getByRole('alertdialog')).toBeInTheDocument();
+    });
+
+    await userEvent.keyboard('{Escape}');
+
+    const result = await waitFor(() => promise, { timeout: 500 });
+    expect(result).toBe(false);
+  });
+
+  it('does not dismiss on Escape when dismissible is false', async () => {
+    render(<Confirmer />);
+    ConfirmState.confirm({ title: 'Delete?', dismissible: false });
+    await waitFor(() => {
+      expect(screen.getByRole('alertdialog')).toBeInTheDocument();
+    });
+
+    await userEvent.keyboard('{Escape}');
+
+    // Dialog should still be open
+    expect(screen.getByRole('alertdialog')).toBeInTheDocument();
+  });
+
+  it('disables confirm button until confirmationKeyword is typed', async () => {
+    render(<Confirmer />);
+    ConfirmState.confirm({ title: 'Delete?', confirmationKeyword: 'DELETE' });
+    await waitFor(() => {
+      expect(screen.getByRole('alertdialog')).toBeInTheDocument();
+    });
+
+    const confirmBtn = screen.getByText('Confirm').closest('button')!;
+    expect(confirmBtn).toBeDisabled();
+
+    const input = document.querySelector('[data-affirm-keyword-input]') as HTMLInputElement;
+    await userEvent.type(input, 'DELETE');
+
+    await waitFor(() => {
+      expect(confirmBtn).not.toBeDisabled();
+    });
   });
 });
