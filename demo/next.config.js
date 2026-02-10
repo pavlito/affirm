@@ -6,7 +6,13 @@ const withNextra = require('nextra')({
   defaultShowCopyCode: true,
 });
 
+const isGithubPages = process.env.GITHUB_PAGES === 'true';
+
 module.exports = withNextra({
+  output: 'export',
+  images: { unoptimized: true },
+  basePath: isGithubPages ? '/affirm' : '',
+  assetPrefix: isGithubPages ? '/affirm/' : '',
   transpilePackages: ['affirm'],
   webpack: (config) => {
     config.resolve.alias = {
