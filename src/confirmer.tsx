@@ -171,6 +171,7 @@ export function Confirmer({ theme = 'system', defaultOptions, className, icons, 
   return ReactDOM.createPortal(
     <div
       data-affirm
+      suppressHydrationWarning
       data-unstyled={isUnstyled || undefined}
       className={resolvedTheme === 'dark' ? 'dark' : undefined}
     >
