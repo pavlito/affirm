@@ -34,11 +34,16 @@ export default {
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="description" content="A beautiful confirm dialog for React. One function call, type-safe, and fully customizable." />
-      <meta name="og:title" content="affirm" />
-      <meta name="og:description" content="A beautiful confirm dialog for React." />
+      <meta property="og:title" content="affirm" />
+      <meta property="og:description" content="A beautiful confirm dialog for React. One function call, type-safe, and fully customizable." />
+      <meta property="og:image" content="https://pavlito.github.io/affirm/og.png" />
+      <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="affirm" />
+      <meta name="twitter:description" content="A beautiful confirm dialog for React." />
+      <meta name="twitter:image" content="https://pavlito.github.io/affirm/og.png" />
       <meta name="theme-color" content="#000000" />
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="/affirm/favicon.ico" />
     </>
   ),
 };
