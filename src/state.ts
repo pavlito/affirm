@@ -79,6 +79,10 @@ class Observer {
   dismiss = () => {
     this.respond(false);
   };
+
+  isOpen = () => {
+    return this.state.isOpen;
+  };
 }
 
 export const ConfirmState = new Observer();
@@ -99,4 +103,5 @@ export const confirm = Object.assign(basicConfirm, {
   alert: ConfirmState.alert,
   custom: ConfirmState.custom,
   dismiss: ConfirmState.dismiss,
+  isOpen: ConfirmState.isOpen,
 });

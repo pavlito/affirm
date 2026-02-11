@@ -177,6 +177,16 @@ describe('state', () => {
     expect(result2).toBe(true);
   });
 
+  it('confirm.isOpen() returns false when no dialog is open', () => {
+    expect(confirm.isOpen()).toBe(false);
+  });
+
+  it('confirm.isOpen() returns true when dialog is open', () => {
+    confirm('Test');
+    expect(confirm.isOpen()).toBe(true);
+    ConfirmState.respond(false); // cleanup
+  });
+
   it('variant shortcuts accept string shorthand', async () => {
     const p = confirm.danger({ title: 'Delete?' });
     const state = ConfirmState.getSnapshot();
