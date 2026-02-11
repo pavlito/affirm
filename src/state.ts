@@ -35,9 +35,7 @@ class Observer {
 
   confirm = (messageOrOptions: string | ConfirmOptions): Promise<boolean> => {
     const options: ConfirmOptions =
-      typeof messageOrOptions === 'string'
-        ? { title: messageOrOptions }
-        : messageOrOptions;
+      typeof messageOrOptions === 'string' ? { title: messageOrOptions } : messageOrOptions;
 
     return new Promise<boolean>((resolve) => {
       this.state = { isOpen: true, options, resolve };
@@ -63,9 +61,7 @@ class Observer {
 
   alert = (messageOrOptions: string | Omit<ConfirmOptions, 'hideCancel'>) => {
     const options =
-      typeof messageOrOptions === 'string'
-        ? { title: messageOrOptions }
-        : messageOrOptions;
+      typeof messageOrOptions === 'string' ? { title: messageOrOptions } : messageOrOptions;
     return this.confirm({ ...options, hideCancel: true });
   };
 

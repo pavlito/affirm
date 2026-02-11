@@ -8,7 +8,13 @@ import { getAsset } from './assets';
 import { createFocusTrap } from './focus-trap';
 import type { ConfirmerProps } from './types';
 
-export function Confirmer({ theme = 'system', defaultOptions, className, icons, unstyled }: ConfirmerProps) {
+export function Confirmer({
+  theme = 'system',
+  defaultOptions,
+  className,
+  icons,
+  unstyled,
+}: ConfirmerProps) {
   const [storeState, setStoreState] = React.useState(ConfirmState.getSnapshot());
 
   React.useEffect(() => {
@@ -84,27 +90,30 @@ export function Confirmer({ theme = 'system', defaultOptions, className, icons, 
   }, [visible]);
 
   // Close animation
-  const handleClose = React.useCallback((value: boolean) => {
-    if (isLoading || loadingAction !== null) return;
-    setDataState('closed');
-    const el = dialogRef.current;
-    if (el) {
-      let fired = false;
-      const onEnd = () => {
-        if (fired) return;
-        fired = true;
-        el.removeEventListener('animationend', onEnd);
+  const handleClose = React.useCallback(
+    (value: boolean) => {
+      if (isLoading || loadingAction !== null) return;
+      setDataState('closed');
+      const el = dialogRef.current;
+      if (el) {
+        let fired = false;
+        const onEnd = () => {
+          if (fired) return;
+          fired = true;
+          el.removeEventListener('animationend', onEnd);
+          setVisible(false);
+          ConfirmState.respond(value);
+        };
+        el.addEventListener('animationend', onEnd);
+        // Fallback if animationend doesn't fire
+        setTimeout(onEnd, 200);
+      } else {
         setVisible(false);
         ConfirmState.respond(value);
-      };
-      el.addEventListener('animationend', onEnd);
-      // Fallback if animationend doesn't fire
-      setTimeout(onEnd, 200);
-    } else {
-      setVisible(false);
-      ConfirmState.respond(value);
-    }
-  }, [isLoading, loadingAction]);
+      }
+    },
+    [isLoading, loadingAction],
+  );
 
   // Escape key
   React.useEffect(() => {
@@ -155,13 +164,15 @@ export function Confirmer({ theme = 'system', defaultOptions, className, icons, 
 
   const variant = options.variant || 'default';
   const confirmText = options.hideCancel
-    ? (options.confirmText || 'OK')
-    : (options.confirmText || 'Confirm');
+    ? options.confirmText || 'OK'
+    : options.confirmText || 'Confirm';
   const cancelText = options.cancelText || 'Cancel';
 
   // Icon resolution: false/null = hidden, undefined = use default, ReactNode = custom
   const hideIcon = options.icon === false || options.icon === null;
-  const icon = hideIcon ? null : (options.icon || icons?.[variant as keyof typeof icons] || getAsset(variant));
+  const icon = hideIcon
+    ? null
+    : options.icon || icons?.[variant as keyof typeof icons] || getAsset(variant);
   const showIcon = !hideIcon && icon !== null && (variant !== 'default' || options.icon);
 
   const keywordMatch = options.confirmationKeyword
@@ -179,7 +190,10 @@ export function Confirmer({ theme = 'system', defaultOptions, className, icons, 
       <div
         data-affirm-overlay
         data-state={dataState}
-        className={[options.overlayClassName, options.classNames?.overlay].filter(Boolean).join(' ') || undefined}
+        className={
+          [options.overlayClassName, options.classNames?.overlay].filter(Boolean).join(' ') ||
+          undefined
+        }
         onClick={handleOverlayClick}
         aria-hidden="true"
       />
@@ -192,19 +206,28 @@ export function Confirmer({ theme = 'system', defaultOptions, className, icons, 
         data-variant={variant}
         data-layout={options.layout || 'default'}
         data-custom={options.custom ? '' : undefined}
-        className={[className, options.className, options.classNames?.dialog].filter(Boolean).join(' ') || undefined}
+        className={
+          [className, options.className, options.classNames?.dialog].filter(Boolean).join(' ') ||
+          undefined
+        }
         style={options.style}
         role="alertdialog"
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby={options.description ? descriptionId : undefined}
       >
-        {options.custom ? options.custom(handleClose) : (
+        {options.custom ? (
+          options.custom(handleClose)
+        ) : (
           <>
             <div data-affirm-content className={options.classNames?.content}>
               {/* Icon + Title */}
               <div data-affirm-header>
-                {showIcon && <span data-affirm-icon className={options.classNames?.icon}>{icon}</span>}
+                {showIcon && (
+                  <span data-affirm-icon className={options.classNames?.icon}>
+                    {icon}
+                  </span>
+                )}
                 <h2 id={titleId} data-affirm-title className={options.classNames?.title}>
                   {options.title}
                 </h2>
@@ -212,7 +235,11 @@ export function Confirmer({ theme = 'system', defaultOptions, className, icons, 
 
               {/* Description */}
               {options.description != null && (
-                <div id={descriptionId} data-affirm-description className={options.classNames?.description}>
+                <div
+                  id={descriptionId}
+                  data-affirm-description
+                  className={options.classNames?.description}
+                >
                   {options.description}
                 </div>
               )}
@@ -233,7 +260,12 @@ export function Confirmer({ theme = 'system', defaultOptions, className, icons, 
             )}
 
             {/* Actions */}
-            <div data-affirm-footer role="group" aria-label="Dialog actions" className={options.classNames?.footer}>
+            <div
+              data-affirm-footer
+              role="group"
+              aria-label="Dialog actions"
+              className={options.classNames?.footer}
+            >
               {!options.hideCancel && (
                 <button
                   ref={cancelRef}
@@ -279,15 +311,13 @@ export function Confirmer({ theme = 'system', defaultOptions, className, icons, 
                 disabled={isLoading || loadingAction !== null || !keywordMatch}
               >
                 {isLoading && <span data-affirm-spinner aria-hidden="true" />}
-                <span style={isLoading ? { visibility: 'hidden' } : undefined}>
-                  {confirmText}
-                </span>
+                <span style={isLoading ? { visibility: 'hidden' } : undefined}>{confirmText}</span>
               </button>
             </div>
           </>
         )}
       </div>
     </div>,
-    document.body
+    document.body,
   );
 }

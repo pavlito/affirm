@@ -5,9 +5,9 @@ export function createFocusTrap(container: HTMLElement) {
   let previouslyFocused: HTMLElement | null = null;
 
   function getFocusableElements() {
-    return Array.from(
-      container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)
-    ).filter((el) => !el.hasAttribute('disabled'));
+    return Array.from(container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)).filter(
+      (el) => !el.hasAttribute('disabled'),
+    );
   }
 
   function handleKeyDown(e: KeyboardEvent) {
