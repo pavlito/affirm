@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach, beforeAll, beforeEach, vi } from 'vitest';
-import { render, screen, waitFor, cleanup, act } from '@testing-library/react';
+import { render, screen, waitFor, cleanup, act, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Confirmer } from '../confirmer';
 import { ConfirmState } from '../state';
@@ -216,19 +216,19 @@ describe('Confirmer', () => {
 
   it('disables confirm button until confirmationKeyword is typed', async () => {
     render(<Confirmer />);
-    ConfirmState.confirm({ title: 'Delete?', confirmationKeyword: 'DELETE' });
-    await waitFor(() => {
-      expect(screen.getByRole('alertdialog')).toBeInTheDocument();
-    });
+    await openDialog({ title: 'Delete?', confirmationKeyword: 'DELETE' });
 
     const confirmBtn = screen.getByText('Confirm').closest('button')!;
     expect(confirmBtn).toBeDisabled();
 
     const input = document.querySelector('[data-affirm-keyword-input]') as HTMLInputElement;
-    await userEvent.type(input, 'DELETE');
+    fireEvent.change(input, { target: { value: 'DELETE' } });
 
-    await waitFor(() => {
-      expect(confirmBtn).not.toBeDisabled();
-    });
+    await waitFor(
+      () => {
+        expect(confirmBtn).not.toBeDisabled();
+      },
+      { timeout: 500 },
+    );
   });
 });
