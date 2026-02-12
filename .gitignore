@@ -12,3 +12,13 @@ docs/
 
 # Claude Code workspace
 .claude/
+
+# Environment and secrets
+.env
+.env.*
+
+# Logs
+*.log
+
+# Test coverage
+coverage/
