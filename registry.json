@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "affirm",
-  "homepage": "https://affirm.dev",
+  "homepage": "https://pavlito.github.io/affirm",
   "items": [
     {
       "name": "confirm-dialog",
