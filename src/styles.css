@@ -17,8 +17,7 @@
   --affirm-dialog-border: #e5e5e5;
 
   /* Typography */
-  --affirm-title-color: #0a0a0a;
-  --affirm-desc-color: #737373;
+  --affirm-text-color: #0a0a0a;
 
   /* Buttons */
   --affirm-cancel-bg: transparent;
@@ -51,8 +50,7 @@
     0 2px 4px rgba(0, 0, 0, 0.2), 0 12px 24px rgba(0, 0, 0, 0.4);
   --affirm-dialog-border: #262626;
 
-  --affirm-title-color: #fafafa;
-  --affirm-desc-color: #a3a3a3;
+  --affirm-text-color: #fafafa;
 
   --affirm-cancel-bg: transparent;
   --affirm-cancel-border: #262626;
@@ -325,7 +323,7 @@
   font-weight: 600;
   line-height: 1.5;
   letter-spacing: -0.011em;
-  color: var(--affirm-title-color);
+  color: var(--affirm-text-color);
 }
 
 [data-affirm-description] {
@@ -335,7 +333,7 @@
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: -0.006em;
-  color: var(--affirm-desc-color);
+  color: var(--affirm-text-color);
 }
 
 /* ============================================
@@ -441,7 +439,7 @@
   font-family: var(--affirm-font);
   font-size: 0.8125rem;
   font-weight: 400;
-  color: var(--affirm-desc-color);
+  color: var(--affirm-text-color);
 }
 
 [data-affirm-keyword-input] {
@@ -453,7 +451,7 @@
   background: transparent;
   font-family: var(--affirm-font);
   font-size: 0.875rem;
-  color: var(--affirm-title-color);
+  color: var(--affirm-text-color);
   outline: none;
   box-sizing: border-box;
   transition: border-color 150ms ease;
