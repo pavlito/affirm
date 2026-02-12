@@ -79,8 +79,6 @@
 [data-affirm] [data-variant='danger'] {
   --affirm-dialog-bg: #ffffff;
   --affirm-dialog-border: #fecdd3;
-  --affirm-title-color: #991b1b;
-  --affirm-desc-color: #b91c1c;
   --affirm-confirm-bg: #dc2626;
   --affirm-confirm-border: #dc2626;
   --affirm-confirm-text: #ffffff;
@@ -93,8 +91,6 @@
 .dark [data-affirm] [data-variant='danger'] {
   --affirm-dialog-bg: #0a0a0a;
   --affirm-dialog-border: #262626;
-  --affirm-title-color: #fca5a5;
-  --affirm-desc-color: #f87171;
   --affirm-confirm-bg: #ef4444;
   --affirm-confirm-border: #ef4444;
   --affirm-confirm-text: #ffffff;
@@ -110,8 +106,6 @@
 [data-affirm] [data-variant='warning'] {
   --affirm-dialog-bg: #ffffff;
   --affirm-dialog-border: #fde68a;
-  --affirm-title-color: #92400e;
-  --affirm-desc-color: #b45309;
   --affirm-confirm-bg: #d97706;
   --affirm-confirm-border: #d97706;
   --affirm-confirm-text: #ffffff;
@@ -124,8 +118,6 @@
 .dark [data-affirm] [data-variant='warning'] {
   --affirm-dialog-bg: #0a0a0a;
   --affirm-dialog-border: #262626;
-  --affirm-title-color: #fcd34d;
-  --affirm-desc-color: #fbbf24;
   --affirm-confirm-bg: #d97706;
   --affirm-confirm-border: #d97706;
   --affirm-confirm-text: #ffffff;
@@ -141,8 +133,6 @@
 [data-affirm] [data-variant='info'] {
   --affirm-dialog-bg: #ffffff;
   --affirm-dialog-border: #bfdbfe;
-  --affirm-title-color: #1e40af;
-  --affirm-desc-color: #1d4ed8;
   --affirm-confirm-bg: #2563eb;
   --affirm-confirm-border: #2563eb;
   --affirm-confirm-text: #ffffff;
@@ -155,8 +145,6 @@
 .dark [data-affirm] [data-variant='info'] {
   --affirm-dialog-bg: #0a0a0a;
   --affirm-dialog-border: #262626;
-  --affirm-title-color: #93c5fd;
-  --affirm-desc-color: #60a5fa;
   --affirm-confirm-bg: #2563eb;
   --affirm-confirm-border: #2563eb;
   --affirm-confirm-text: #ffffff;
@@ -172,8 +160,6 @@
 [data-affirm] [data-variant='success'] {
   --affirm-dialog-bg: #ffffff;
   --affirm-dialog-border: #bbf7d0;
-  --affirm-title-color: #166534;
-  --affirm-desc-color: #15803d;
   --affirm-confirm-bg: #16a34a;
   --affirm-confirm-border: #16a34a;
   --affirm-confirm-text: #ffffff;
@@ -186,8 +172,6 @@
 .dark [data-affirm] [data-variant='success'] {
   --affirm-dialog-bg: #0a0a0a;
   --affirm-dialog-border: #262626;
-  --affirm-title-color: #86efac;
-  --affirm-desc-color: #4ade80;
   --affirm-confirm-bg: #16a34a;
   --affirm-confirm-border: #16a34a;
   --affirm-confirm-text: #ffffff;
