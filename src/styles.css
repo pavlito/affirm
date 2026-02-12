@@ -38,9 +38,6 @@
   --affirm-icon-bg: #f5f5f5;
   --affirm-icon-color: #0a0a0a;
 
-  /* Spinner */
-  --affirm-spinner-color: currentColor;
-
   /* Muted (drag handle, etc.) */
   --affirm-muted: #737373;
 }
@@ -531,17 +528,11 @@
 /* ============================================
    Loading Spinner
    ============================================ */
-[data-affirm-button][data-loading='true'] {
-  color: transparent;
-  pointer-events: none;
-}
-
-[data-affirm-button][data-loading='true']::after {
-  content: '';
+[data-affirm-spinner] {
   position: absolute;
   width: 1rem;
   height: 1rem;
-  border: 2px solid var(--affirm-confirm-text);
+  border: 2px solid currentColor;
   border-right-color: transparent;
   border-radius: 50%;
   animation: affirm-spin 600ms linear infinite;

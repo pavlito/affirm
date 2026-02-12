@@ -38,7 +38,9 @@
     },
     "./styles.css": "./dist/styles.css"
   },
-  "sideEffects": false,
+  "sideEffects": [
+    "./dist/styles.css"
+  ],
   "files": [
     "dist"
   ],

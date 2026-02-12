@@ -9,7 +9,7 @@ export const Footer = () => {
           <p className={styles.p}>
             Built by{' '}
             <a
-              href="https://github.com/pav-luc"
+              href="https://github.com/pavlito"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.link}

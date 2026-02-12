@@ -10,7 +10,7 @@
   <a href="https://www.npmjs.com/package/affirm"><img src="https://img.shields.io/npm/v/affirm.svg" alt="npm version" /></a>
   <a href="https://github.com/pavlito/affirm/actions/workflows/ci.yml"><img src="https://github.com/pavlito/affirm/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
   <a href="https://github.com/pavlito/affirm/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/affirm.svg" alt="License" /></a>
-  <a href="https://img.shields.io/bundlephobia/minzip/affirm"><img src="https://img.shields.io/bundlephobia/minzip/affirm" alt="Bundle size" /></a>
+  <a href="https://bundlephobia.com/package/affirm"><img src="https://img.shields.io/bundlephobia/minzip/affirm" alt="Bundle size" /></a>
 </p>
 
 <p align="center">

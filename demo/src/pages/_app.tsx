@@ -11,7 +11,6 @@ export default function App({ Component, pageProps }: AppProps): ReactElement {
     <>
       <Head>
         <title>affirm</title>
-        <meta name="description" content="A beautiful confirm dialog for React. One function call, type-safe, and fully customizable." />
       </Head>
       <Component {...pageProps} />
       <Confirmer theme="system" />
