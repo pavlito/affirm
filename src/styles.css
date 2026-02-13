@@ -187,6 +187,9 @@
   background: var(--okayy-overlay-bg);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: backdrop-filter;
 }
 
 [data-okayy-overlay][data-state='initial'] {

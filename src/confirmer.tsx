@@ -66,14 +66,13 @@ export function Confirmer({
   // Open animation
   React.useEffect(() => {
     if (isOpen) {
+      setDataState('initial');
       setVisible(true);
       setIsLoading(false);
       setConfirmInput('');
       setLoadingAction(null);
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          setDataState('open');
-        });
+        setDataState('open');
       });
     }
   }, [isOpen]);
