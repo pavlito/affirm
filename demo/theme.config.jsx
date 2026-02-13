@@ -1,6 +1,9 @@
 import { ThemeSwitch } from './src/components/ThemeSwitch';
 
 export default {
+  nextThemes: {
+    defaultTheme: 'dark',
+  },
   logo: <span style={{ fontWeight: 800, fontSize: 18 }}>okayy</span>,
   project: {
     link: 'https://github.com/pavlito/okayy',
