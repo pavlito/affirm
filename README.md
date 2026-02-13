@@ -19,7 +19,6 @@
   <a href="https://pavlito.github.io/okayy">Documentation</a> ·
   <a href="https://pavlito.github.io/okayy/getting-started">Getting Started</a>
 </p>
----
 
 ## Usage
 
