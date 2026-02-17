@@ -6,7 +6,7 @@
   A confirm dialog for React. One line. Beautiful.
 </p>
 
-![okayy](https://github.com/user-attachments/assets/b73ce2a5-25ed-4546-8156-3b16b9e5d891)
+https://github.com/user-attachments/assets/b73ce2a5-25ed-4546-8156-3b16b9e5d891
 
 <p align="center">
   <a href="https://www.npmjs.com/package/okayy"><img src="https://img.shields.io/npm/v/okayy.svg" alt="npm version" /></a>
